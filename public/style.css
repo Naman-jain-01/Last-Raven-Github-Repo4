@@ -948,6 +948,48 @@ img {
     opacity: 1;
     visibility: visible; }
 
+
+/* Whatsapp-icon CSS */
+
+  .icon-whatsapp{
+    background-color: #000;
+    height: 48px;
+    width: 48px;
+    position: fixed;
+    right: 15vh ;
+    bottom: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 99;
+    border-radius: 40px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s ease;
+    }
+  .fa-whatsapp{
+      font-size: 35px;
+      color: #fff;
+    }
+    .icon-whatsapp:hover{
+      background-color: #fff;
+      cursor: pointer;
+    }
+    .fa-whatsapp:hover{
+      color: #000;
+    }
+    @media (max-width:767px){
+      .icon-whatsapp{
+        right: 4.7vh;
+        bottom: 12vh;
+        height: 40px;
+        width: 40px;
+      }
+      .fa-whatsapp{
+        font-size: 30px;
+      }
+    }
+
 /* :: 10.0 Songs Area CSS */
 .single-song-area {
   position: relative;

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="zxx">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3752469381731841"
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3752469381731841"
   crossorigin="anonymous"></script>
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -31,8 +32,37 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Main CSS File -->
   <link href="assets/stylesheets/styles.css" rel="stylesheet">
+
+
+  <!-- whatsapp-css Styling     -->
+  <style>
+    .icon-whatsapp:hover {
+      background-color: rgb(16 16 16 / 80%) !important;
+      cursor: pointer;
+    }
+
+    .icon-whatsapp:hover i {
+      color: #000;
+    }
+
+    @media (max-width: 767px) {
+      .icon-whatsapp {
+        right: 2.5vh !important;
+        bottom: 12vh !important;
+        height: 44px !important;
+        width: 44px !important;
+      }
+
+      .bi-whatsapp {
+        font-size: 25px !important;
+      }
+    }
+  </style>
 
 
 </head>
@@ -99,6 +129,14 @@
     </div>
   </section>
   <!-- End Hero Section -->
+
+  <!-- WhatsApp-Icon HTML -->
+  <a href="https://wa.me/9435107262" target="_blank">
+    <div class="icon-whatsapp d-flex align-items-center justify-content-center position-fixed"
+      style="background-color: #f2c76e; height: 44px ; width: 44px ; right: 12vh ; bottom: 15px; border-radius: 40px; z-index: 99; box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3); transition: background-color 0.5s ease;">
+      <i class='bi bi-whatsapp' style="font-size: 28px; color: #fff;"></i>
+    </div>
+  </a>
 
   <main id="main">
     <!-- Start Service Section -->
@@ -413,7 +451,7 @@
                   </div>
                 </div><!-- End Portfolio Item -->
 
-                
+
                 <div class="col-xl-4 col-md-6 portfolio-item filter-web">
                   <div class="portfolio-wrap">
                     <a href="techportfolio/p2.png" data-gallery="portfolio-gallery-branding" class="glightbox">
@@ -448,7 +486,8 @@
                       <img src="techportfolio/p4.png" class="img-fluid" alt="Branding 1">
                     </a>
                     <div class="portfolio-info">
-                      <h4><a href="https://dongo-ai.vercel.app/" title="More Details">Personal Research Bot Website</a></h4>
+                      <h4><a href="https://dongo-ai.vercel.app/" title="More Details">Personal Research Bot Website</a>
+                      </h4>
                       <div class="project-btn"><a href="https://dongo-ai.vercel.app/" class="fill-btn">View
                           Project</a></div>
                     </div>
@@ -462,7 +501,8 @@
                       <img src="techportfolio/p5.png" class="img-fluid" alt="Branding 1">
                     </a>
                     <div class="portfolio-info">
-                      <h4><a href="https://moyerevamped-sooty.vercel.app/" title="More Details">Blockchain Website</a></h4>
+                      <h4><a href="https://moyerevamped-sooty.vercel.app/" title="More Details">Blockchain Website</a>
+                      </h4>
                       <div class="project-btn"><a href="https://moyerevamped-sooty.vercel.app/" class="fill-btn">View
                           Project</a></div>
                     </div>
@@ -1354,6 +1394,16 @@
   <!-- Template Main JS File -->
   <script src="assets/javascripts/main.js"></script>
 
+  <!-- ChatBot Script -->
+
+  <script>
+    window.embeddedChatbotConfig = {
+      chatbotId: "-OQWxb8ROpA4b_sdJYX6Y",
+      domain: "www.chatbase.co"
+    }
+  </script>
+  <script src="https://www.chatbase.co/embed.min.js" chatbotId="-OQWxb8ROpA4b_sdJYX6Y" domain="www.chatbase.co" defer>
+  </script>
 
 
 </body>
