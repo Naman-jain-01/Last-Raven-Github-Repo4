@@ -41,6 +41,22 @@
             color: #000;
         }
 
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .blinking-icon {
+            animation: blink 1s infinite;
+        }
+
         @media (max-width: 767px) {
             .icon-whatsapp {
                 right: 2.5vh !important;
@@ -51,6 +67,44 @@
 
             .bi-whatsapp {
                 font-size: 25px !important;
+            }
+        }
+
+
+        .message-box {
+            position: absolute;
+            top: -70px;
+            left: 20%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            width: 250px;
+        }
+
+        .message-box p {
+            font-size: 13px;
+            margin: 0;
+            padding: 0;
+            height: 30px;
+            /* To prevent box resizing during message change */
+            overflow: hidden;
+        }
+
+        @media(max-width: 767px) {
+            .message-box {
+                left: -40%;
+                top: -60px;
+                width: 150px;
+                height: 50px;
+            }
+
+            .message-box p {
+                font-size: 10px;
+                height: 50px;
             }
         }
     </style>
@@ -189,8 +243,12 @@
         <!-- WhatsApp-Icon HTML -->
         <a href="https://wa.me/9435107262" target="_blank" style="display: block;">
             <div class="icon-whatsapp d-flex align-items-center justify-content-center position-fixed"
-                style="background-color: #EE5007; height: 44px ; width: 44px ; right: 8vh ; bottom: 44px; border-radius: 40px; z-index: 99; box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3); transition: background-color 0.5s ease;">
-                <i class='bi bi-whatsapp' style="font-size: 25px; color: #fff;"></i>
+                style="background-color: #EE5007; height: 65px ; width: 65px ; right: 8vh ; bottom: 44px; border-radius: 40px; z-index: 99; box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3); transition: background-color 0.5s ease;">
+                <i class='bi bi-whatsapp jet-tabs__label-icon iconSizeChanger'
+                    style="font-size: 25px; color: #fff;"></i>
+                <div class="message-box">
+                    <p id="messageText"></p>
+                </div>
             </div>
         </a>
 
@@ -860,5 +918,96 @@ T e m p l a t e M o
 
 </body>
 <script src="assets/javascripts/main.js"></script>
+
+<!-- Blink Whatsapp Icon -->
+<script>
+    const icon = document.querySelector('.iconSizeChanger');
+    let size = 30;
+    let growing = true;
+    let animationInterval;
+
+    // Function to grow and shrink the icon
+    function animateIcon() {
+        if (growing) {
+            size += 1;
+            if (size >= 48) {
+                growing = false; // Start shrinking
+            }
+        } else {
+            size -= 1;
+            if (size <= 30) {
+                growing = true; // Start growing
+            }
+        }
+        icon.style.fontSize = size + 'px';
+    }
+
+    // Function to check window size and apply animation
+    function checkWindowSize() {
+        const width = window.innerWidth;
+        if (width >= 1024) {
+            const iconElement = document.querySelector(".jet-tabs__label-icon");
+            iconElement.classList.add("blinking-icon");
+            // Start animation if window size is large
+            if (!animationInterval) {
+                animationInterval = setInterval(animateIcon, 50);
+            }
+        } else {
+            // Stop animation if window size is small
+            clearInterval(animationInterval);
+            animationInterval = null;
+            icon.style.fontSize = '30px'; // Reset size
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const iconElement = document.querySelector(".jet-tabs__label-icon");
+                iconElement.classList.add("blinking-icon");
+            });
+        }
+    }
+
+    // Run on window resize
+    window.addEventListener('resize', checkWindowSize);
+
+    // Run on page load
+    checkWindowSize();
+</script>
+
+
+<script>
+    const messages = [
+        "'Stop Thinking, Start Using'",
+        "'Contact our team at WhatsApp'"
+    ];
+    let messageIndex = 0;
+    let charIndex = 0;
+    let currentMessage = '';
+    const messageTextElement = document.getElementById('messageText');
+
+    // Function to type out the letters
+    function typeMessage() {
+        if (charIndex < currentMessage.length) {
+            messageTextElement.innerHTML += currentMessage.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeMessage, 100); // Adjust typing speed (100ms per letter)
+        } else {
+            // After the message is fully typed, wait for 3 seconds before showing the next message
+            setTimeout(showNextMessage, 3000);
+        }
+    }
+
+    // Function to show the next message
+    function showNextMessage() {
+        messageIndex = (messageIndex + 1) % messages.length; // Loop through messages
+        currentMessage = messages[messageIndex];
+        charIndex = 0;
+        messageTextElement.innerHTML = ''; // Clear the previous message
+        typeMessage();
+    }
+
+    // Start the typing effect with the first message
+    currentMessage = messages[messageIndex];
+    typeMessage();
+
+</script>
 
 </html>

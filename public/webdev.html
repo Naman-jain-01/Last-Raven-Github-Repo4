@@ -50,6 +50,22 @@
       color: #000;
     }
 
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .blinking-icon {
+      animation: blink 1s infinite;
+    }
+
     @media (max-width: 767px) {
       .icon-whatsapp {
         right: 2.5vh !important;
@@ -60,6 +76,114 @@
 
       .bi-whatsapp {
         font-size: 25px !important;
+      }
+    }
+
+
+    /* .trigger {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      width: 200px;
+      text-align: center;
+      margin: 20px auto;
+    } */
+
+    .info-box {
+      display: none;
+      width: 400px;
+      height: 200px;
+      border: 2px solid #333;
+      background-color: #f9f9f9;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 999;
+    }
+
+    .image-container {
+      float: left;
+      width: 40%;
+      padding: 10px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    .details-container {
+      float: right;
+      width: 55%;
+      padding: 10px;
+    }
+
+    /* Cross icon as close button */
+    .close-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+      font-weight: bold;
+      background-color: transparent;
+      border: none;
+      z-index: 999;
+    }
+
+    .close-icon:hover {
+      color: #f44336;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+
+
+    .message-box {
+      position: absolute;
+      top: -80px;
+      left: 35%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+      width: 250px;
+    }
+
+    .message-box p {
+      font-size: 12px;
+      margin: 0;
+      padding: 0;
+      height: 30px;
+      /* To prevent box resizing during message change */
+      overflow: hidden;
+      z-index: 99999;
+    }
+
+    @media(max-width: 767px) {
+      .message-box {
+        left: -40%;
+        top: -60px;
+        width: 150px;
+        height: 50px;
+      }
+
+      .message-box p {
+        font-size: 10px;
+        height: 50px;
       }
     }
   </style>
@@ -133,8 +257,11 @@
   <!-- WhatsApp-Icon HTML -->
   <a href="https://wa.me/9435107262" target="_blank">
     <div class="icon-whatsapp d-flex align-items-center justify-content-center position-fixed"
-      style="background-color: #f2c76e; height: 44px ; width: 44px ; right: 12vh ; bottom: 15px; border-radius: 40px; z-index: 99; box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3); transition: background-color 0.5s ease;">
-      <i class='bi bi-whatsapp' style="font-size: 28px; color: #fff;"></i>
+      style="background-color: #f2c76e; height: 65px ; width: 65px ; right: 12vh ; bottom: 15px; border-radius: 40px; z-index: 99; box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3); transition: background-color 0.5s ease;">
+      <i class='bi bi-whatsapp jet-tabs__label-icon iconSizeChanger' style="font-size: 28px; color: #fff;"></i>
+      <div class="message-box">
+        <p id="messageText"></p>
+      </div>
     </div>
   </a>
 
@@ -391,7 +518,7 @@
           </div>
 
           <div class="row gy-4 portfolio-container">
-            <div class="col-xl-4 col-md-6 portfolio-item filter-web">
+            <div class="col-xl-4 col-md-6 portfolio-item filter-web trigger" id="triggerBox">
               <div class="portfolio-wrap">
                 <a href="techportfolio/Webtemplate2.png" data-gallery="portfolio-gallery-branding" class="glightbox">
                   <img src="techportfolio/Webtemplate2.png" class="img-fluid" alt="Branding 1">
@@ -401,6 +528,7 @@
                   <div class="project-btn"><a href="https://main--lastravenportfolio.netlify.app/" class="fill-btn">View
                       Project</a></div>
                 </div>
+
               </div>
             </div><!-- End Portfolio Item -->
 
@@ -902,13 +1030,13 @@
             the experts behind our success and learn more about their expertise and contributions.</p>
         </div>
 
-        <div class="row gy-4">
+        <div class="row justify-content-evenly gy-4">
 
           <div class="col-xl-3 col-md-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
-              <img src="assets/images/team/team-1.jpg" class="img-fluid" alt="">
-              <h4>Jhone Bi</h4>
-              <span>Application Manager</span>
+              <img src="assets/images/team/VaibhavRaj3.jpg" class="img-fluid" alt="">
+              <h4>Vaibhav Raj</h4>
+              <span>CEO</span>
               <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>
@@ -920,9 +1048,9 @@
 
           <div class="col-xl-3 col-md-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
-              <img src="assets/images/team/team-2.jpg" class="img-fluid" alt="">
-              <h4>Sani Awesome</h4>
-              <span>Social Media</span>
+              <img src="assets/images/team/Naman.jpg" class="img-fluid" alt="">
+              <h4>Naman Jain</h4>
+              <span>CTO</span>
               <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>
@@ -934,9 +1062,9 @@
 
           <div class="col-xl-3 col-md-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
-              <img src="assets/images/team/team-3.jpg" class="img-fluid" alt="">
-              <h4>Andrio Willi</h4>
-              <span>Content Writer</span>
+              <img src="assets/images/team/Sandra (1).jpg" class="img-fluid" alt="">
+              <h4>Sandra Robinson</h4>
+              <span>CMO</span>
               <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>
@@ -946,7 +1074,7 @@
             </div>
           </div><!-- End Team Member -->
 
-          <div class="col-xl-3 col-md-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+          <!-- <div class="col-xl-3 col-md-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
             <div class="member">
               <img src="assets/images/team/team-4.jpg" class="img-fluid" alt="">
               <h4>Afa Jonson</h4>
@@ -958,7 +1086,7 @@
                 <a href="https://www.instagram.com/lastraven.in/"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div>End Team Member -->
 
         </div>
 
@@ -1339,9 +1467,9 @@
                 <h3>Contacts</h3>
               </div>
               <div class="footer-text">
-                <p><i class="bi bi-geo-alt-fill mr-15"></i> 101 Guwahati , PBO 12345, India </p>
-                <p><i class="bi bi-telephone-inbound-fill mr-15"></i> +1 1234 56 789</p>
-                <p><i class="bi bi-envelope-fill mr-15"></i>lastraven@gmail.com</p>
+                <p><i class="bi bi-geo-alt-fill mr-15"></i> IIITG, Bongora, Guwahati, Assam </p>
+                <p><i class="bi bi-telephone-inbound-fill mr-15"></i> +91 8690713248 or +91 9435107262</p>
+                <p><i class="bi bi-envelope-fill mr-15"></i> lastraven@gmail.com</p>
               </div>
             </div>
             <div class="footer-widget">
@@ -1405,6 +1533,115 @@
   <script src="https://www.chatbase.co/embed.min.js" chatbotId="R7sgGtSjJKy3uKgC6_hOt" domain="www.chatbase.co" defer>
   </script>
 
+  <!-- Blink Whatsapp Icon -->
+  <script>
+    const icon = document.querySelector('.iconSizeChanger');
+    let size = 30;
+    let growing = true;
+    let animationInterval;
+
+    // Function to grow and shrink the icon
+    function animateIcon() {
+      if (growing) {
+        size += 1;
+        if (size >= 48) {
+          growing = false; // Start shrinking
+        }
+      } else {
+        size -= 1;
+        if (size <= 30) {
+          growing = true; // Start growing
+        }
+      }
+      icon.style.fontSize = size + 'px';
+    }
+
+    // Function to check window size and apply animation
+    function checkWindowSize() {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        const iconElement = document.querySelector(".jet-tabs__label-icon");
+        iconElement.classList.add("blinking-icon");
+        // Start animation if window size is large
+        if (!animationInterval) {
+          animationInterval = setInterval(animateIcon, 50);
+        }
+      } else {
+        // Stop animation if window size is small
+        clearInterval(animationInterval);
+        animationInterval = null;
+        icon.style.fontSize = '30px'; // Reset size
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const iconElement = document.querySelector(".jet-tabs__label-icon");
+          iconElement.classList.add("blinking-icon");
+        });
+      }
+    }
+
+    // Run on window resize
+    window.addEventListener('resize', checkWindowSize);
+
+    // Run on page load
+    checkWindowSize();
+  </script>
+
+
+
+  <script>
+    const triggerBox = document.getElementById('triggerBox');
+    const infoBox = document.getElementById('infoBox');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // Show the box when trigger is clicked
+    triggerBox.addEventListener('click', () => {
+      console.log('hii bro');
+      infoBox.style.display = 'block';
+    });
+
+    // Close the box when the close icon is clicked
+    closeBtn.addEventListener('click', () => {
+      infoBox.style.display = 'none';
+    });
+
+  </script>
+
+  <script>
+    const messages = [
+      "'Stop Thinking, Start Using'",
+      "'Contact our team at WhatsApp'"
+    ];
+    let messageIndex = 0;
+    let charIndex = 0;
+    let currentMessage = '';
+    const messageTextElement = document.getElementById('messageText');
+
+    // Function to type out the letters
+    function typeMessage() {
+      if (charIndex < currentMessage.length) {
+        messageTextElement.innerHTML += currentMessage.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeMessage, 100); // Adjust typing speed (100ms per letter)
+      } else {
+        // After the message is fully typed, wait for 3 seconds before showing the next message
+        setTimeout(showNextMessage, 3000);
+      }
+    }
+
+    // Function to show the next message
+    function showNextMessage() {
+      messageIndex = (messageIndex + 1) % messages.length; // Loop through messages
+      currentMessage = messages[messageIndex];
+      charIndex = 0;
+      messageTextElement.innerHTML = ''; // Clear the previous message
+      typeMessage();
+    }
+
+    // Start the typing effect with the first message
+    currentMessage = messages[messageIndex];
+    typeMessage();
+
+  </script>
 
 </body>
 

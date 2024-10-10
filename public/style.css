@@ -953,11 +953,11 @@ img {
 
   .icon-whatsapp{
     background-color: #000;
-    height: 48px;
-    width: 48px;
+    height: 60px;
+    width: 60px;
     position: fixed;
     right: 15vh ;
-    bottom: 44px;
+    bottom: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -989,6 +989,60 @@ img {
         font-size: 30px;
       }
     }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+          opacity: 1;
+      }
+
+      50% {
+          opacity: 0;
+      }
+  }
+
+  .blinking-icon {
+      animation: blink 1s infinite;
+  }
+
+
+  .message-box {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    width: 250px;
+}
+
+.message-box p {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    /* To prevent box resizing during message change */
+    overflow: hidden;
+}
+
+@media(max-width: 767px){
+    .message-box {
+        left: -40%;
+        top: -60px;
+        width: 150px;
+        height: 50px;
+    }
+    .message-box p{
+        font-size: 10px;
+        height: 50px;
+    }
+}
+
 
 /* :: 10.0 Songs Area CSS */
 .single-song-area {

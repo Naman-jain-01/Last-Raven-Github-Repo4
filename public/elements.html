@@ -121,7 +121,10 @@
     <!-- WhatsApp-Icon HTML -->
     <a href="https://wa.me/9435107262" target="_blank">
         <div class="icon-whatsapp">
-            <i class='fa fa-whatsapp'></i>
+            <i class='fa fa-whatsapp jet-tabs__label-icon iconSizeChanger'></i>
+            <div class="message-box">
+                <p id="messageText"></p>
+            </div>
         </div>
     </a>
 
@@ -1321,6 +1324,96 @@
     </script>
     <script src="https://www.chatbase.co/embed.min.js" chatbotId="R7sgGtSjJKy3uKgC6_hOt" domain="www.chatbase.co" defer>
     </script>
+
+    <!-- Blink Whatsapp Icon -->
+    <script>
+        const icon = document.querySelector('.iconSizeChanger');
+        let size = 30;
+        let growing = true;
+        let animationInterval;
+
+        // Function to grow and shrink the icon
+        function animateIcon() {
+            if (growing) {
+                size += 1;
+                if (size >= 48) {
+                    growing = false; // Start shrinking
+                }
+            } else {
+                size -= 1;
+                if (size <= 30) {
+                    growing = true; // Start growing
+                }
+            }
+            icon.style.fontSize = size + 'px';
+        }
+
+        // Function to check window size and apply animation
+        function checkWindowSize() {
+            const width = window.innerWidth;
+            if (width >= 1024) {
+                const iconElement = document.querySelector(".jet-tabs__label-icon");
+                iconElement.classList.add("blinking-icon");
+                // Start animation if window size is large
+                if (!animationInterval) {
+                    animationInterval = setInterval(animateIcon, 50);
+                }
+            } else {
+                // Stop animation if window size is small
+                clearInterval(animationInterval);
+                animationInterval = null;
+                icon.style.fontSize = '30px'; // Reset size
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    const iconElement = document.querySelector(".jet-tabs__label-icon");
+                    iconElement.classList.add("blinking-icon");
+                });
+            }
+        }
+
+        // Run on window resize
+        window.addEventListener('resize', checkWindowSize);
+
+        // Run on page load
+        checkWindowSize();
+    </script>
+
+<script>
+    const messages = [
+        "'Stop Thinking, Start Using'",
+        "'Contact our team at WhatsApp'"
+    ];
+    let messageIndex = 0;
+    let charIndex = 0;
+    let currentMessage = '';
+    const messageTextElement = document.getElementById('messageText');
+
+    // Function to type out the letters
+    function typeMessage() {
+        if (charIndex < currentMessage.length) {
+            messageTextElement.innerHTML += currentMessage.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeMessage, 100); // Adjust typing speed (100ms per letter)
+        } else {
+            // After the message is fully typed, wait for 3 seconds before showing the next message
+            setTimeout(showNextMessage, 3000);
+        }
+    }
+
+    // Function to show the next message
+    function showNextMessage() {
+        messageIndex = (messageIndex + 1) % messages.length; // Loop through messages
+        currentMessage = messages[messageIndex];
+        charIndex = 0;
+        messageTextElement.innerHTML = ''; // Clear the previous message
+        typeMessage();
+    }
+
+    // Start the typing effect with the first message
+    currentMessage = messages[messageIndex];
+    typeMessage();
+
+</script>
 
 </body>
 
